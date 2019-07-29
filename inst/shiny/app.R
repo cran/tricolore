@@ -1,5 +1,5 @@
 library(shiny)
-library(dplyr)
+library(sf)
 library(ggtern)
 library(tricolore)
 
@@ -148,7 +148,7 @@ server <- function(input, output) {
     # generate map
     euro_map <-
       euro_basemap +
-      geom_sf(aes(fill = rgb), color = NA,
+      geom_sf(aes(fill = rgb, geometry = geometry), color = NA,
               data = euro_example) +
       annotation_custom(ggplotGrob(lgnd),
                         xmin = 54e5, xmax = 74e5,
