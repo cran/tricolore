@@ -7,9 +7,9 @@
 TernaryDistance(p, C)
 }
 \arguments{
-\item{p}{A vector of ternary coordinates {p1, p2, p3}.}
+\item{p}{A vector of ternary coordinates [p1, p2, p3].}
 
-\item{C}{n by 3 matrix of ternary coordinates {p1, p2, p3}_i for i=1,...,n.}
+\item{C}{n by 3 matrix of ternary coordinates [p1, p2, p3](i) for i=1,...,n.}
 }
 \value{
 A numeric vector of distances between coordinate p and all
@@ -19,6 +19,7 @@ A numeric vector of distances between coordinate p and all
 The distances between ternary coordinate p and a set of ternary coordinates C.
 }
 \examples{
+# NOTE: only intended for internal use and not part of the API
 p <- c(0.5, 0.2, 0.3)
 C <- prop.table(matrix(runif(3*10), ncol = 3), 1)
 tricolore:::TernaryDistance(p, C)

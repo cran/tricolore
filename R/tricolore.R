@@ -153,6 +153,7 @@ ValidateParametersTricoloreSextant <- function (pars) {
 #' @return The geometric mean as numeric scalar.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' tricolore:::GeometricMean(0:100)
 #' tricolore:::GeometricMean(0:100, zero.rm = FALSE)
 #'
@@ -168,11 +169,12 @@ GeometricMean <- function (x, na.rm = TRUE, zero.rm = TRUE) {
 #'
 #' Calculate the centre of a compositional data set.
 #'
-#' @param P n by m matrix of compositions {p1, ..., pm}_i for i=1,...,n.
+#' @param P n by m matrix of compositions [p1, ..., pm]_i for i=1,...,n.
 #'
 #' @return The centre of P as an m element numeric vector.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' P <- prop.table(matrix(runif(300), 100), margin = 1)
 #' tricolore:::Centre(P)
 #'
@@ -199,12 +201,13 @@ Centre <- function (P) {
 #'
 #' Pertubate a compositional data set by a compositional vector.
 #'
-#' @param P n by m matrix of compositions {p1, ..., pm}_i for i=1,...,n.
-#' @param c Compositional pertubation vector {c1, ..., cm}.
+#' @param P n by m matrix of compositions [p1, ..., pm]_i for i=1,...,n.
+#' @param c Compositional pertubation vector [c1, ..., cm].
 #'
 #' @return n by m matrix of pertubated compositions.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' P <- prop.table(matrix(runif(12), 4), margin = 1)
 #' cP <- tricolore:::Pertube(P, 1/tricolore:::Centre(P))
 #' tricolore:::Centre(cP)
@@ -228,12 +231,13 @@ Pertube <- function (P, c = rep(1/3, 3)) {
 #'
 #' Raise a compositional data-set to a given power.
 #'
-#' @param P n by m matrix of compositions {p1, ..., pm}_i for i=1,...,n.
+#' @param P n by m matrix of compositions [p1, ..., pm]_i for i=1,...,n.
 #' @param scale Power scalar.
 #'
 #' @return n by m numeric matrix of powered compositions.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' P <- prop.table(matrix(runif(12), 4), margin = 1)
 #' tricolore:::PowerScale(P, 2)
 #'
@@ -274,6 +278,7 @@ PowerScale <- function (P, scale = 1) {
 #' S. H. Derakhshan and C. V. Deutsch (2009): A Color Scale for Ternary Mixtures.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' tricolore:::TernaryMeshCentroids(1)
 #' tricolore:::TernaryMeshCentroids(2)
 #' tricolore:::TernaryMeshCentroids(3)
@@ -300,12 +305,12 @@ TernaryMeshCentroids <- function (k) {
 #'
 #' @param C n by 4 matrix of barycentric centroid coordinates of n=k^2
 #'          sub-triangles. Column order: id, p1, p2, p3 with id=1,...,k^2.
-#' @param k Number of rows in the segmented equilateral triangle.
 #'
 #' @return A numeric matrix with index, vertex id and barycentric vertex
 #'   coordinates for each of the k^2 sub-triangles.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' k = 2
 #' C <- tricolore:::TernaryMeshCentroids(k)
 #' tricolore:::TernaryMeshVertices(C)
@@ -335,8 +340,8 @@ TernaryMeshVertices <- function (C) {
 #'
 #' The distances between ternary coordinate p and a set of ternary coordinates C.
 #'
-#' @param p A vector of ternary coordinates {p1, p2, p3}.
-#' @param C n by 3 matrix of ternary coordinates {p1, p2, p3}_i for i=1,...,n.
+#' @param p A vector of ternary coordinates [p1, p2, p3].
+#' @param C n by 3 matrix of ternary coordinates [p1, p2, p3](i) for i=1,...,n.
 #'
 #' @return A numeric vector of distances between coordinate p and all
 #'   coordinates in C.
@@ -345,6 +350,7 @@ TernaryMeshVertices <- function (C) {
 #' https://en.wikipedia.org/wiki/Barycentric_coordinate_system#Distance_between_points
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' p <- c(0.5, 0.2, 0.3)
 #' C <- prop.table(matrix(runif(3*10), ncol = 3), 1)
 #' tricolore:::TernaryDistance(p, C)
@@ -357,12 +363,13 @@ TernaryDistance <- function(p, C) {
 
 #' For Ternary Coordinates P Return the Nearest Coordinate in Set C
 #'
-#' @param P,C n by 3 matrix of ternary coordinates {p1, p2, p3}_i for
+#' @param P,C n by 3 matrix of ternary coordinates [p1, p2, p3](i) for
 #'            i=1,...,n. n may be different for P and C.
 #'
 #' @return n by 3 matrix of ternary coordinates in C.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' P <- prop.table(matrix(runif(9), ncol = 3), 1)
 #' C <- tricolore:::TernaryMeshCentroids(2)[,-1]
 #' tricolore:::TernaryNearest(P, C)
@@ -376,13 +383,14 @@ TernaryNearest <- function (P, C) {
 #' Return Ternary Gridlines Centered Around Some Composition
 #'
 #' @param center The center of the grid.
-#'   A vector of ternary coordinates {p1, p2, p3}.
+#'   A vector of ternary coordinates [p1, p2, p3].
 #' @param spacing The spacing of the grid in percent-point increments.
 #'   A numeric > 0.
 #'
 #' @return A list of lists.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' tricolore:::TernaryCenterGrid(c(1/6, 2/6, 3/6), 10)
 #'
 #' @keywords internal
@@ -421,13 +429,14 @@ TernaryCenterGrid <- function (center, spacing) {
 
 #' Return the Limits of Ternary Coordinates
 #'
-#' @param P n by 3 matrix of ternary coordinates {p1, p2, p3}_i for
+#' @param P n by 3 matrix of ternary coordinates [p1, p2, p3](i) for
 #'          i=1,...,n.
 #' @param na.rm Should NAs be removed? (default=TRUE)
 #'
 #' @return A 2 by 3 matrix of lower and upper limits for p1, p2 and p3.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' P <- prop.table(matrix(runif(9), ncol = 3), 1)
 #' tricolore:::TernaryLimits(P)
 #'
@@ -449,12 +458,13 @@ TernaryLimits <- function (P, na.rm = TRUE) {
 #' of the sextant regions.
 #'
 #' @param center The sextant center.
-#'   A vector of ternary coordinates {p1, p2, p3}.
+#'   A vector of ternary coordinates [p1, p2, p3].
 #'
 #' @return Index, vertex id and barycentric vertex coordinates for each of the
 #'         6 sextants.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' tricolore:::TernarySextantVertices(rep(1/3, 3))
 #'
 #' @keywords internal
@@ -493,14 +503,15 @@ TernarySextantVertices <- function (center) {
 #'
 #' Given barycentric coordinates return the id of the surrounding sextant.
 #'
-#' @param P n by 3 matrix of ternary coordinates {p1, p2, p3}_i for
+#' @param P n by 3 matrix of ternary coordinates [p1, p2, p3](i) for
 #'          i=1,...,n.
 #' @param center The sextant center.
-#'   A vector of ternary coordinates {p1, p2, p3}.
+#'   A vector of ternary coordinates [p1, p2, p3].
 #'
 #' @return An n element character vector of sextant id's 1 to 6.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' P <- prop.table(matrix(runif(9), ncol = 3), 1)
 #' tricolore:::TernarySurroundingSextant(P, rep(1/3, 3))
 #'
@@ -527,7 +538,7 @@ TernarySurroundingSextant <- function (P, center) {
 #'
 #' Return the ternary balance scheme colors for a matrix of ternary compositions.
 #'
-#' @param P n by 3 matrix of ternary compositions {p1, p2, p3}_i for
+#' @param P n by 3 matrix of ternary compositions [p1, p2, p3](i) for
 #'          i=1, ..., n.
 #' @param center Ternary coordinates of the grey-point.
 #' @param breaks Number of breaks in the discrete color scale. An integer >1.
@@ -539,10 +550,11 @@ TernarySurroundingSextant <- function (P, center) {
 #' @param spread Spread of the color scale around center > 0.
 #'
 #' @return An n row data frame giving, for each row of the input P, the input
-#' proportions (p1, p2, p3), parameters of the color mixture (h, c, l) and the
+#' proportions [p1, p2, p3], parameters of the color mixture (h, c, l) and the
 #' hex-rgb string of the mixed colors (rgb).
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' P <- prop.table(matrix(runif(9), ncol = 3), 1)
 #' tricolore:::ColorMapTricolore(P, center = rep(1/3, 3), breaks = 4,
 #'                               h_ = 80, c_ = 140, l_ = 80,
@@ -621,16 +633,17 @@ ColorMapTricolore <- function (P, center, breaks, h_, c_, l_, contrast, spread) 
 #'
 #' Return the sextant scheme colors for a matrix of ternary compositions.
 #'
-#' @param P n by 3 matrix of ternary compositions {p1, p2, p3}_i for
+#' @param P n by 3 matrix of ternary compositions [p1, p2, p3](i) for
 #'          i=1, ..., n.
 #' @param center Ternary coordinates of the sextant meeting point.
 #' @param values 6 element character vector of rgb-codes.
 #'
 #' @return An n row data frame giving, for each row of the input P, the input
-#' proportions (p1, p2, p3), sextant id (sextant) and the hex-rgb string of the
+#' proportions [p1, p2, p3], sextant id (sextant) and the hex-rgb string of the
 #' mixed colors (rgb).
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' P <- prop.table(matrix(runif(9), ncol = 3), 1)
 #' tricolore:::ColorMapSextant(P, c(1/3, 1/3, 1/3),
 #'                             c('#01A0C6', '#B8B3D8', '#F11D8C', '#FFB3B3',
@@ -667,6 +680,7 @@ ColorMapSextant <- function (P, center, values) {
 #'   ternary axes.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' tricolore:::BreaksAndLabels(1, breaks = 3)
 #' tricolore:::BreaksAndLabels(2)
 #' tricolore:::BreaksAndLabels(3, center = c(1/3, 1/3, 1/3))
@@ -707,23 +721,32 @@ BreaksAndLabels <- function (type, center = NULL, breaks = NULL) {
 #'
 #' @return A ggtern grob.
 #'
-#' @importFrom ggplot2 aes_string geom_polygon scale_color_identity
-#'   scale_fill_identity element_text theme
-#' @importFrom ggtern ggtern geom_mask
+#' @importFrom ggplot2 scale_color_identity
+#'   scale_fill_identity element_text theme layer
+#' @importFrom ggtern ggtern aes geom_mask
 #'   scale_L_continuous scale_R_continuous scale_T_continuous
 #'   geom_Lline geom_Tline geom_Rline theme_classic
+#' @importFrom rlang .data
 #'
 #' @keywords internal
 BasicKey <- function(legend_surface, limits, brklab, show_center, center, lwd) {
 
   key <-
     # basic legend
-    ggtern(legend_surface, aes_string(x = 'p1', y = 'p2', z = 'p3')) +
-    geom_polygon(aes_string(group = 'id', fill = 'rgb', color = 'rgb'), lwd = lwd) +
+    ggtern(legend_surface) +
+    layer(
+      geom = 'polygon', stat = 'identity', position = 'identity',
+      mapping = aes(
+        x = .data[['p1']], y = .data[['p2']], z = .data[['p3']],
+        group = .data[['id']], fill = .data[['rgb']], color = .data[['rgb']]
+      ),
+      params = list(lwd = lwd),
+      check.aes = FALSE, check.param = FALSE
+    ) +
     geom_mask() +
     # rgb color input
-    scale_color_identity(guide = FALSE) +
-    scale_fill_identity(guide = FALSE) +
+    scale_color_identity(guide = 'none') +
+    scale_fill_identity(guide = 'none') +
     # theme
     theme_classic() +
     theme(tern.axis.title.L = element_text(hjust = 0.2, vjust = 1, angle = -60),
@@ -773,6 +796,7 @@ BasicKey <- function(legend_surface, limits, brklab, show_center, center, lwd) {
 #' @return A ggtern grob.
 #'
 #' @examples
+#' # NOTE: only intended for internal use and not part of the API
 #' tricolore:::ColorKeyTricolore(center = rep(1/3, 3), breaks = 4,
 #'                               h_ = 80, c_ = 140, l_ = 80,
 #'                               contrast = 0.4, spread = 1,
@@ -830,10 +854,11 @@ ColorKeyTricolore <- function (center, breaks, h_, c_, l_, contrast, spread,
 #' @return A ggtern grob.
 #'
 #' @examples
-#'tricolore:::ColorKeySextant(center = prop.table(runif(3)),
-#'                            values = c('#01A0C6', '#B8B3D8', '#F11D8C',
-#'                                       '#FFB3B3', '#FFFF00', '#B3DCC3'),
-#'                            label_as = 'pct_diff', show_center = TRUE)
+#' # NOTE: only intended for internal use and not part of the API
+#' tricolore:::ColorKeySextant(center = prop.table(runif(3)),
+#'                             values = c('#01A0C6', '#B8B3D8', '#F11D8C',
+#'                                        '#FFB3B3', '#FFFF00', '#B3DCC3'),
+#'                             label_as = 'pct_diff', show_center = TRUE)
 #'
 #' @keywords internal
 ColorKeySextant <- function (center, values, label_as, show_center,
@@ -909,7 +934,9 @@ ColorKeySextant <- function (center, values, label_as, show_center,
 #' P <- as.data.frame(prop.table(matrix(runif(3^6), ncol = 3), 1))
 #' Tricolore(P, 'V1', 'V2', 'V3')
 #'
-#' @importFrom ggplot2 aes_string geom_point labs
+#' @importFrom ggplot2 labs layer
+#' @importFrom ggtern aes
+#' @importFrom rlang .data
 #'
 #' @md
 #'
@@ -971,9 +998,13 @@ Tricolore <- function (df, p1, p2, p3,
         # labels take names from input variables
         labs(x = p1, y = p2, z = p3),
         if (show_data) {
-          geom_point(aes_string(x = 'p1', y = 'p2', z = 'p3'),
-                     color = 'black', shape = 16, size = 0.5, alpha = 0.5,
-                     data = mixture)
+          layer(
+            geom = 'point', stat = 'identity', position = 'identity',
+            mapping = aes(x = .data[['p1']], y = .data[['p2']], z = .data[['p3']]),
+            params = list(color = 'black', shape = 16, size = 0.5, alpha = 0.5),
+            data = mixture,
+            check.aes = FALSE, check.param = FALSE
+          )
         }
       )
 
@@ -1022,7 +1053,9 @@ Tricolore <- function (df, p1, p2, p3,
 #' P <- as.data.frame(prop.table(matrix(runif(3^6), ncol = 3), 1))
 #' TricoloreSextant(P, 'V1', 'V2', 'V3')
 #'
-#' @importFrom ggplot2 aes_string geom_point labs
+#' @importFrom ggplot2 labs layer
+#' @importFrom ggtern aes
+#' @importFrom rlang .data
 #'
 #' @md
 #'
@@ -1058,7 +1091,6 @@ TricoloreSextant <- function (df, p1, p2, p3,
   # center color-scale over data's centre if center==NA
   if ( is.na(center[1]) ) { center = Centre(P) }
 
-
   # derive the color mixture
   mixture <- ColorMapSextant(P, center, values)
 
@@ -1079,9 +1111,13 @@ TricoloreSextant <- function (df, p1, p2, p3,
         # labels take names from input variables
         labs(x = p1, y = p2, z = p3),
         if (show_data) {
-          geom_point(aes_string(x = 'p1', y = 'p2', z = 'p3'),
-                     color = 'black', shape = 16, size = 0.5, alpha = 0.5,
-                     data = mixture)
+          layer(
+            geom = 'point', stat = 'identity', position = 'identity',
+            mapping = aes(x = .data[['p1']], y = .data[['p2']], z = .data[['p3']]),
+            params = list(color = 'black', shape = 16, size = 0.5, alpha = 0.5),
+            data = mixture,
+            check.aes = FALSE, check.param = FALSE
+          )
         }
       )
 
@@ -1122,7 +1158,7 @@ DemoTricolore <- function () {
 #' @source
 #'   Derived from Eurostats European Geodata.
 #'   (c) EuroGeographics for the administrative boundaries.
-#'   \url{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/}
+#'   \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/}
 'euro_basemap'
 
 #' NUTS-2 Level Geodata and Compositional Data for Europe
@@ -1156,7 +1192,7 @@ DemoTricolore <- function () {
 #' @source
 #'   Derived from Eurostats European Geodata.
 #'   (c) EuroGeographics for the administrative boundaries.
-#'   \url{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/}
+#'   \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/}
 #'
 #'   Education data derived from Eurostats table "edat_lfse_04".
 #'

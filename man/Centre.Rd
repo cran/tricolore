@@ -7,7 +7,7 @@
 Centre(P)
 }
 \arguments{
-\item{P}{n by m matrix of compositions {p1, ..., pm}_i for i=1,...,n.}
+\item{P}{n by m matrix of compositions [p1, ..., pm]_i for i=1,...,n.}
 }
 \value{
 The centre of P as an m element numeric vector.
@@ -16,6 +16,7 @@ The centre of P as an m element numeric vector.
 Calculate the centre of a compositional data set.
 }
 \examples{
+# NOTE: only intended for internal use and not part of the API
 P <- prop.table(matrix(runif(300), 100), margin = 1)
 tricolore:::Centre(P)
 

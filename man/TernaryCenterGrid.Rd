@@ -8,7 +8,7 @@ TernaryCenterGrid(center, spacing)
 }
 \arguments{
 \item{center}{The center of the grid.
-A vector of ternary coordinates {p1, p2, p3}.}
+A vector of ternary coordinates [p1, p2, p3].}
 
 \item{spacing}{The spacing of the grid in percent-point increments.
 A numeric > 0.}
@@ -20,6 +20,7 @@ A list of lists.
 Return Ternary Gridlines Centered Around Some Composition
 }
 \examples{
+# NOTE: only intended for internal use and not part of the API
 tricolore:::TernaryCenterGrid(c(1/6, 2/6, 3/6), 10)
 
 }

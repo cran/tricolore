@@ -7,9 +7,9 @@
 Pertube(P, c = rep(1/3, 3))
 }
 \arguments{
-\item{P}{n by m matrix of compositions {p1, ..., pm}_i for i=1,...,n.}
+\item{P}{n by m matrix of compositions [p1, ..., pm]_i for i=1,...,n.}
 
-\item{c}{Compositional pertubation vector {c1, ..., cm}.}
+\item{c}{Compositional pertubation vector [c1, ..., cm].}
 }
 \value{
 n by m matrix of pertubated compositions.
@@ -18,6 +18,7 @@ n by m matrix of pertubated compositions.
 Pertubate a compositional data set by a compositional vector.
 }
 \examples{
+# NOTE: only intended for internal use and not part of the API
 P <- prop.table(matrix(runif(12), 4), margin = 1)
 cP <- tricolore:::Pertube(P, 1/tricolore:::Centre(P))
 tricolore:::Centre(cP)
